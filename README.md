@@ -40,3 +40,8 @@ sudo launchctl remove userkeymapping
 sudo rm /Library/LaunchAgents/userkeymapping.plist
 sudo rm /Users/Shared/bin/userkeymapping
 ```
+
+
+## Custom:
+
+https://hidutil-generator.netlify.app
