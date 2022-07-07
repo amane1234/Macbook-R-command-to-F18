@@ -3,6 +3,11 @@
 
 Open terminal app and copy & paste
 
+
+
+
+
+
 ## Enable:
 ```shell
 mkdir -p /Users/Shared/bin
@@ -33,6 +38,8 @@ sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
 ```
 
 
+
+
 ## Disable:
 
 ```shell
@@ -40,6 +47,8 @@ sudo launchctl remove userkeymapping
 sudo rm /Library/LaunchAgents/userkeymapping.plist
 sudo rm /Users/Shared/bin/userkeymapping
 ```
+
+
 
 
 ## Custom:
