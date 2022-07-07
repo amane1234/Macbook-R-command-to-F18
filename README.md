@@ -3,6 +3,7 @@
 
 Open terminal app and copy & paste
 
+## Enable:
 ```shell
 mkdir -p /Users/Shared/bin
 echo '''#!/bin/sh\nhidutil property --set '\'{\"UserKeyMapping\":\[\{\"HIDKeyboardModifierMappingSrc\":0x7000000e7,\"HIDKeyboardModifierMappingDst\":0x70000006d\}\]\}\''''' > /Users/Shared/bin/userkeymapping
@@ -32,7 +33,7 @@ sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
 ```
 
 
-Disable
+## Disable:
 
 ```shell
 sudo launchctl remove userkeymapping
