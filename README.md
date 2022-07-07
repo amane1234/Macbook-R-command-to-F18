@@ -2,6 +2,7 @@
 맥북 오른쪽 커맨드키를 F18키로 변경
 
 Open terminal app and copy & paste
+
 ,,,shell
 mkdir -p /Users/Shared/bin
 echo '''#!/bin/sh\nhidutil property --set '\'{\"UserKeyMapping\":\[\{\"HIDKeyboardModifierMappingSrc\":0x7000000e7,\"HIDKeyboardModifierMappingDst\":0x70000006d\}\]\}\''''' > /Users/Shared/bin/userkeymapping
