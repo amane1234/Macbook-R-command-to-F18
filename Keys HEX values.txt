@@ -1,5 +1,3 @@
-export const keys = [
-  {
     group: 'Modifier keys',
     keys: [
       { key: 'caps_lock', hex: 0x39 },
@@ -13,8 +11,7 @@ export const keys = [
       { key: 'right_command', hex: 0xE7 },
       { key: 'fn', hex: 0x0003 + 0xFF00000000 - 0x700000000 }
     ]
-  },
-  {
+
     group: 'Controls and symbols',
     keys: [
       { key: 'return_or_enter', hex: 0x28 },
@@ -37,8 +34,7 @@ export const keys = [
       { key: 'slash (/)', hex: 0x38 },
       { key: 'non_us_backslash (\\), section (§)', hex: 0x64 }
     ]
-  },
-  {
+
     group: 'Arrow keys',
     keys: [
       { key: 'up_arrow', hex: 0x52 },
@@ -50,8 +46,7 @@ export const keys = [
       { key: 'home', hex: 0x4A },
       { key: 'end', hex: 0x4D }
     ]
-  },
-  {
+
     group: 'Letter keys',
     keys: [
       { key: 'a', hex: 0x04 },
@@ -81,8 +76,7 @@ export const keys = [
       { key: 'y', hex: 0x1C },
       { key: 'z', hex: 0x1D }
     ]
-  },
-  {
+
     group: 'Number keys',
     keys: [
       { key: '1', hex: 0x1E },
@@ -96,8 +90,7 @@ export const keys = [
       { key: '9', hex: 0x26 },
       { key: '0', hex: 0x27 }
     ]
-  },
-  {
+
     group: 'Function keys',
     keys: [
       { key: 'f1', hex: 0x3A },
@@ -120,8 +113,7 @@ export const keys = [
       { key: 'f18', hex: 0x6D },
       { key: 'f19', hex: 0x6E }
     ]
-  },
-  {
+
     group: 'Media control keys',
     keys: [
       { key: 'display_brightness_decrement', hex: 0xC00000070 - 0x700000000 },
@@ -138,8 +130,7 @@ export const keys = [
       { key: 'volume_decrement', hex: 0xC000000EA - 0x700000000 },
       { key: 'volume_increment', hex: 0xC000000E9 - 0x700000000 }
     ]
-  },
-  {
+
     group: 'Keys in pc keyboards',
     keys: [
       { key: 'print_screen', hex: 0x46 },
@@ -166,8 +157,7 @@ export const keys = [
       { key: 'locking_num_lock', hex: 0x83 },
       { key: 'locking_scroll_lock', hex: 0x84 }
     ]
-  },
-  {
+
     group: 'Keypad keys',
     keys: [
       { key: 'keypad_num_lock', hex: 0x53 },
@@ -190,7 +180,3 @@ export const keys = [
       { key: 'keypad_equal_sign (=)', hex: 0x67 },
       { key: 'keypad_comma (,)', hex: 0x85 }
     ]
-  }
-];
-
-export default keys;
