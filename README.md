@@ -9,17 +9,13 @@ Remapping the **Right Command** key (`⌘`) to the **F18** key on macOS using a 
 To remap the Right Command key to F18, open the **Terminal** and run the following commands.
 
 ```bash
-# Create a directory to store the script
 mkdir -p /Users/Shared/bin
 
-# Create the script that remaps the Right Command to F18
 echo '''#!/bin/sh
 hidutil property --set '{\"UserKeyMapping\":[{\"HIDKeyboardModifierMappingSrc\":0x7000000e7,\"HIDKeyboardModifierMappingDst\":0x70000006d}]}''' > /Users/Shared/bin/userkeymapping
 
-# Make the script executable
 chmod 755 /Users/Shared/bin/userkeymapping
 
-# Create a LaunchAgent plist file to run the script at login
 sudo cat << EOF > /Users/Shared/bin/userkeymapping.plist
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -37,13 +33,10 @@ sudo cat << EOF > /Users/Shared/bin/userkeymapping.plist
 </plist>
 EOF
 
-# Move the plist to the LaunchAgents folder
 sudo mv /Users/Shared/bin/userkeymapping.plist /Library/LaunchAgents/userkeymapping.plist
 
-# Change ownership to root
 sudo chown root /Library/LaunchAgents/userkeymapping.plist
 
-# Load the LaunchAgent to activate the remapping
 sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
 ```
 
