@@ -1,20 +1,26 @@
-# Macbook-R-command-to-F18
-맥북 오른쪽 커맨드키를 F18키로 변경
+# Remap Right Command Key to F18 on macOS
 
-Open terminal app and copy & paste
+Remapping the **Right Command** key (`⌘`) to the **F18** key on macOS using a custom script and `hidutil`. 
 
+## Step-by-Step Instructions
 
+### 1. Enable the Remapping
 
+To remap the Right Command key to F18, open the **Terminal** and run the following commands.
 
-
-
-## Enable:
-```shell
+```bash
+# Create a directory to store the script
 mkdir -p /Users/Shared/bin
-echo '''#!/bin/sh\nhidutil property --set '\'{\"UserKeyMapping\":\[\{\"HIDKeyboardModifierMappingSrc\":0x7000000e7,\"HIDKeyboardModifierMappingDst\":0x70000006d\}\]\}\''''' > /Users/Shared/bin/userkeymapping
-chmod 755 /Users/Shared/bin/userkeymapping
-sudo cat<<: >/Users/Shared/bin/userkeymapping.plist
 
+# Create the script that remaps the Right Command to F18
+echo '''#!/bin/sh
+hidutil property --set '{\"UserKeyMapping\":[{\"HIDKeyboardModifierMappingSrc\":0x7000000e7,\"HIDKeyboardModifierMappingDst\":0x70000006d}]}''' > /Users/Shared/bin/userkeymapping
+
+# Make the script executable
+chmod 755 /Users/Shared/bin/userkeymapping
+
+# Create a LaunchAgent plist file to run the script at login
+sudo cat << EOF > /Users/Shared/bin/userkeymapping.plist
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -29,28 +35,44 @@ sudo cat<<: >/Users/Shared/bin/userkeymapping.plist
     <true/>
 </dict>
 </plist>
-:
+EOF
 
-
+# Move the plist to the LaunchAgents folder
 sudo mv /Users/Shared/bin/userkeymapping.plist /Library/LaunchAgents/userkeymapping.plist
+
+# Change ownership to root
 sudo chown root /Library/LaunchAgents/userkeymapping.plist
+
+# Load the LaunchAgent to activate the remapping
 sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
 ```
 
+### 2. Verify the Remapping
 
+After running the commands above, the **Right Command** key will now act as **F18**. You can test this by pressing the Right Command key and checking if your system recognizes it as the F18 key (e.g., using a key event tester or a keyboard shortcut that utilizes F18).
 
+### 3. Disable the Remapping (If Needed)
 
-## Disable:
+If you ever need to **disable** the remapping, run the following commands to reverse the process:
 
-```shell
+```bash
+# Unload the LaunchAgent
 sudo launchctl remove userkeymapping
+
+# Remove the plist file and the script
 sudo rm /Library/LaunchAgents/userkeymapping.plist
 sudo rm /Users/Shared/bin/userkeymapping
 ```
 
+---
 
+## Customize Your Key Remap
 
+If you'd like to modify the remapping or remap other keys, you can use the [HIDUtil Generator](https://hidutil-generator.netlify.app) to create custom key mappings.
 
-## Custom:
+---
 
-https://hidutil-generator.netlify.app
+### Notes:
+
+- The **Right Command** key has a `HIDKeyboardModifierMappingSrc` value of `0x7000000e7`, and **F18** has a `HIDKeyboardModifierMappingDst` value of `0x70000006d`. You can change these values in the script to remap different keys as needed.
+- The script uses **LaunchAgents** to make the remapping persist after a reboot.
