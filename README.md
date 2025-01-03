@@ -36,19 +36,16 @@ sudo chown root /Library/LaunchAgents/userkeymapping.plist
 sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
 ```
 
-### 2. Verify the Remapping
+### 2. Verify the Remapping after reboot.
 
-After running the commands above, the **Right Command** key will now act as **F18**. You can test this by pressing the Right Command key and checking if your system recognizes it as the F18 key (e.g., using a key event tester or a keyboard shortcut that utilizes F18).
+After running the commands above and reboot, the **Right Command** key will now act as **F18**. You can test this by pressing the Right Command key and checking if your system recognizes it as the F18 key (e.g., using a key event tester or a keyboard shortcut that utilizes F18).
 
 ### 3. Disable the Remapping (If Needed)
 
-If you ever need to **disable** the remapping, run the following commands to reverse the process:
+If you ever need to **disable** the remapping, run the following commands to remove the process:
 
 ```bash
-# Unload the LaunchAgent
 sudo launchctl remove userkeymapping
-
-# Remove the plist file and the script
 sudo rm /Library/LaunchAgents/userkeymapping.plist
 sudo rm /Users/Shared/bin/userkeymapping
 ```
