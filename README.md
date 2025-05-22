@@ -35,7 +35,7 @@ Remapping the **Right Command** key (`⌘`) to the **F18** key on macOS using a 
    ```
 
 
-### 3. Disable the Remapping (If Needed)
+### Disable the Remapping (If Needed)
 
 If you ever need to **disable** the remapping, run the following commands to remove the process:
 
