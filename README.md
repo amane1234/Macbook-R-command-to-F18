@@ -15,6 +15,9 @@ chmod +x Keyremapper.sh
 
 # Run it (will auto-sudo)
 ./Keyremapper.sh
+
+# Remove it
+rm Keyremapper.sh
 ```
 
 ### 2. Verify the Remapping after reboot.
