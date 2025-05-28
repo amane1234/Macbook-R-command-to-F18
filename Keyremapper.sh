@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Suppress zsh warning during sudo execution
-export BASH_SILENCE_DEPRECATION_WARNING=1
-
 # Ensure script runs with root privileges
 if [[ $EUID -ne 0 ]]; then
     exec sudo -p "This script requires admin privileges. Please enter your password: " "$0" "$@"
