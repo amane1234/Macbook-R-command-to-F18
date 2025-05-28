@@ -6,10 +6,9 @@ Remapping the **Right Command** key (`⌘`) to the **F18** key on macOS using a 
 
 ### 1. Enable the Remapping
 
-```bash
-# Download the script
-curl -O https://github.com/amane1234/Macbook-R-command-to-F18/main/Keyremapper.sh
+Download the Keyremapper.sh first, then browse to the directory
 
+```bash
 # Make it executable
 chmod +x Keyremapper.sh
 
