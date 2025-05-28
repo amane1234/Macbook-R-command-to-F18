@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Suppress zsh warning during sudo execution
 export BASH_SILENCE_DEPRECATION_WARNING=1
