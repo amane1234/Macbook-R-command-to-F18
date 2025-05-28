@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Suppress zsh warning during sudo execution
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Ensure script runs with root privileges
 if [[ $EUID -ne 0 ]]; then
     exec sudo -p "This script requires admin privileges. Please enter your password: " "$0" "$@"
@@ -58,7 +61,7 @@ launchctl bootstrap system "$PLIST_TARGET" 2>&1 | sed 's/^/  /'
 echo -e "\nVerifying installation:"
 if launchctl print system/userkeymapping &>/dev/null; then
     echo "✅ Service loaded successfully"
-    echo "The right Command key (⌘) has been remapped to F18"
+    echo "The right Command key (⌘) has been remapped to F16"
     echo "This change will persist across reboots"
 else
     echo "❌ Service failed to load" >&2
