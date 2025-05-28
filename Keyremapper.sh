@@ -1,18 +1,18 @@
 #!/bin/bash
 
-# Script requires root privileges
+# Ensure script runs with root privileges
 if [[ $EUID -ne 0 ]]; then
-    exec sudo -p "This script need admin privileges. Please enter your password: " "$0" "$@"
+    exec sudo -p "This script requires admin privileges. Please enter your password: " "$0" "$@"
     exit $?
 fi
 
-# Define paths
+# Define paths for maintainability
 BIN_DIR="/Users/Shared/bin"
 SCRIPT_PATH="$BIN_DIR/userkeymapping"
 PLIST_SOURCE="$BIN_DIR/userkeymapping.plist"
 PLIST_TARGET="/Library/LaunchAgents/userkeymapping.plist"
 
-# Create bin directory
+# Create bin directory with proper permissions
 echo "Creating directory: $BIN_DIR"
 mkdir -p "$BIN_DIR" || { echo "❌ Failed to create directory" >&2; exit 1; }
 chmod 755 "$BIN_DIR" || { echo "❌ Failed to set directory permissions" >&2; exit 1; }
@@ -26,7 +26,7 @@ EOF
 
 chmod 755 "$SCRIPT_PATH" || { echo "❌ Failed to make script executable" >&2; exit 1; }
 
-# Generate Launch agent plist
+# Generate launch agent plist
 echo "Creating launch agent"
 cat > "$PLIST_SOURCE" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -59,7 +59,7 @@ echo -e "\nVerifying installation:"
 if launchctl print system/userkeymapping &>/dev/null; then
     echo "✅ Service loaded successfully"
     echo "The right Command key (⌘) has been remapped to F18"
-    echo "This change will persist after reboot"
+    echo "This change will persist across reboots"
 else
     echo "❌ Service failed to load" >&2
     exit 1
