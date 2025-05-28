@@ -6,34 +6,8 @@ Remapping the **Right Command** key (`⌘`) to the **F18** key on macOS using a 
 
 ### 1. Enable the Remapping
 
-To remap the Right Command key to F18, open the **Terminal** and run the following commands.
-
 ```bash
-mkdir -p /Users/Shared/bin
-echo '''#!/bin/sh\nhidutil property --set '\'{\"UserKeyMapping\":\[\{\"HIDKeyboardModifierMappingSrc\":0x7000000e7,\"HIDKeyboardModifierMappingDst\":0x70000006d\}\]\}\''''' > /Users/Shared/bin/userkeymapping
-chmod 755 /Users/Shared/bin/userkeymapping
-sudo cat<<: >/Users/Shared/bin/userkeymapping.plist
-
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-    <key>Label</key>
-    <string>userkeymapping</string>
-    <key>ProgramArguments</key>
-    <array>
-        <string>/Users/Shared/bin/userkeymapping</string>
-    </array>
-    <key>RunAtLoad</key>
-    <true/>
-</dict>
-</plist>
-:
-
-
-sudo mv /Users/Shared/bin/userkeymapping.plist /Library/LaunchAgents/userkeymapping.plist
-sudo chown root /Library/LaunchAgents/userkeymapping.plist
-sudo launchctl load /Library/LaunchAgents/userkeymapping.plist
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/amane1234/Macbook-R-command-to-F18/main/Keyremapper.sh)"
 ```
 
 ### 2. Verify the Remapping after reboot.
@@ -45,11 +19,9 @@ After running the commands above and reboot, the **Right Command** key will now 
 If you ever need to **disable** the remapping, run the following commands to remove the process:
 
 ```bash
-sudo launchctl remove userkeymapping
 sudo rm /Library/LaunchAgents/userkeymapping.plist
-sudo rm /Users/Shared/bin/userkeymapping
+rm /Users/Shared/bin/userkeymapping
 ```
-
 ---
 
 ### Notes:
