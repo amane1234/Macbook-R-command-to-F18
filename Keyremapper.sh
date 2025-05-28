@@ -61,7 +61,7 @@ launchctl bootstrap system "$PLIST_TARGET" 2>&1 | sed 's/^/  /'
 echo -e "\nVerifying installation:"
 if launchctl print system/userkeymapping &>/dev/null; then
     echo "✅ Service loaded successfully"
-    echo "The right Command key (⌘) has been remapped to F16"
+    echo "The right Command key (⌘) has been remapped to F18"
     echo "This change will persist across reboots"
 else
     echo "❌ Service failed to load" >&2
