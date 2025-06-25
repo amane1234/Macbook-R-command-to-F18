@@ -2,7 +2,7 @@
 
 # Ensure script runs with root privileges
 if [[ $EUID -ne 0 ]]; then
-    exec sudo -p "This script requires admin privileges. Please enter your password: " "$0" "$@"
+    exec sudo -p "이 스크립트는 루트 권한을 필요로 합니다, sudo 비밀번호를 입력해주세요: " "$0" "$@"
     exit $?
 fi
 
@@ -14,8 +14,8 @@ PLIST_TARGET="/Library/LaunchAgents/userkeymapping.plist"
 
 # Create bin directory with proper permissions
 echo "Creating directory: $BIN_DIR"
-mkdir -p "$BIN_DIR" || { echo "❌ Failed to create directory" >&2; exit 1; }
-chmod 755 "$BIN_DIR" || { echo "❌ Failed to set directory permissions" >&2; exit 1; }
+mkdir -p "$BIN_DIR" || { echo "에러 : /Users/Shared/bin 디렉토리를 만드는데 실패" >&2; exit 1; }
+chmod 755 "$BIN_DIR" || { echo "에러: /Users/Shared/bin 디렉토리의 권한 설정 실패" >&2; exit 1; }
 
 # Create executable script
 echo "Creating keyboard mapping script"
@@ -24,7 +24,7 @@ cat > "$SCRIPT_PATH" <<'EOF'
 hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x7000000e7,"HIDKeyboardModifierMappingDst":0x70000006d}]}'
 EOF
 
-chmod 755 "$SCRIPT_PATH" || { echo "❌ Failed to make script executable" >&2; exit 1; }
+chmod 755 "$SCRIPT_PATH" || { echo "에러 : 스크립트를 755 권한으로 설정 실패" >&2; exit 1; }
 
 # Generate launch agent plist
 echo "Creating launch agent"
@@ -47,8 +47,8 @@ EOF
 
 # Install and load launch agent
 echo "Installing system service"
-mv -f "$PLIST_SOURCE" "$PLIST_TARGET" || { echo "❌ Failed to install launch agent" >&2; exit 1; }
-chown root "$PLIST_TARGET" || { echo "❌ Failed to set launch agent ownership" >&2; exit 1; }
+mv -f "$PLIST_SOURCE" "$PLIST_TARGET" || { echo "에러 : launch agent 설치 실패" >&2; exit 1; }
+chown root "$PLIST_TARGET" || { echo "에러 : launch agent 권한 오류" >&2; exit 1; }
 
 # Load for all users
 echo "Loading service:"
@@ -57,10 +57,10 @@ launchctl bootstrap system "$PLIST_TARGET" 2>&1 | sed 's/^/  /'
 # Verify installation
 echo -e "\nVerifying installation:"
 if launchctl print system/userkeymapping &>/dev/null; then
-    echo "✅ Service loaded successfully"
-    echo "The right Command key (⌘) has been remapped to F18"
-    echo "This change will persist across reboots"
+    echo "설치 성공"
+    echo "재부팅 후, 오른쪽 Command 키(⌘) 가 F18으로 설정됩니다"
+    echo "삭제를 하지 않는 이상, 키 재설정은 유지 됩니다"
 else
-    echo "❌ Service failed to load" >&2
+    echo "서비스 설치에 실패하였습니다" >&2
     exit 1
 fi
