@@ -56,13 +56,13 @@ rm /Users/Shared/bin/userkeymapping
 curl -O https://raw.githubusercontent.com/amane1234/Macbook-R-command-to-F18/refs/heads/main/Keyremapper_kr.sh
 
 # 스크립트 실행 권한 부여
-chmod +x Keyremapper.sh
+chmod +x Keyremapper_kr.sh
 
 # 실행 (sudo 비밀번호가 필요합니다)
-./Keyremapper.sh
+./Keyremapper_kr.sh
 
 # 사용 후 삭제
-rm Keyremapper.sh
+rm Keyremapper_kr.sh
 ```
 
 ### 2. 재부팅 이후, 키 설정이 제대로 되었는지 확인 합니다
