@@ -97,7 +97,9 @@ rm /Users/Shared/bin/userkeymapping
 
 ### Source:
 
-코드의 작동 방식은 밑의 블로그에서 가져왔습니다.
+코드를 밑의 블로그에서 가져와 약간의 변형과 개량을 했습니다
+
+작동방식(hidutil 을 사용해서 0x7000000e7 를 0x70000006d 으로 재배치)은 완전히 똑같습니다.
 
 - https://juil.dev/mac-right-command-to-hangul/
   
