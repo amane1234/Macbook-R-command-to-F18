@@ -91,18 +91,3 @@ sudo rm /Library/LaunchAgents/userkeymapping.plist
 rm /Users/Shared/bin/userkeymapping
 ```
 ---
-
-
-### Notes:
-
-- The **Right Command** key has a `HIDKeyboardModifierMappingSrc` value of `0x7000000e7`, and **F18** has a `HIDKeyboardModifierMappingDst` value of `0x70000006d`. You can change these values in the script to remap different keys as needed.
-- The script uses **LaunchAgents** to make the remapping persist after a reboot.
-  
----
-
-## Customize Your Key Remap
-
-If you'd like to modify the remapping or remap other keys, you can use the [HIDUtil Generator](https://hidutil-generator.netlify.app) to create custom key mappings.
-
-
-Source : https://juil.dev/mac-right-command-to-hangul/
